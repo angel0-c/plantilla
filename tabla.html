@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="todo.js"></script>
+  <div id="formContainer"></div>
+  <div id="tableContainer"></div>
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <style>
+        .login-container {
+            background-color: white; 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            text-align: center;
+            margin: auto;
+        }
+
+        h2 {
+            margin: 10px 0;
+            color: #011C40;
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #011C40;
+            box-shadow: 0 0 5px rgba(0, 28, 64, 0.5);
+        }
+
+        .btn-primary {
+            background-color: #011C40;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #011126;
+        }
+
+        .margin-t {
+            margin-top: 10px;
+        }
+    </style>
+  <style>
+    .login-container {
+        background-color: white; 
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        width: 400px;
+        text-align: center;
+        margin: auto;
+    }
+
+    h2 {
+        margin: 10px 0;
+        color: #011C40;
+    }
+
+    .form-control {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+        transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+        border-color: #011C40;
+        box-shadow: 0 0 5px rgba(0, 28, 64, 0.5);
+    }
+
+    .btn-primary {
+        background-color: #011C40;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .btn-primary:hover {
+        background-color: #011126;
+    }
+
+    .margin-t {
+        margin-top: 10px;
+    }
+
+    .function-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .function-item {
+        width: 30%;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+    <button id="linkButton" class="btn btn-primary mt-3">Abrir Validación de Números</button>
+
+    <!-- Botón para validar números directamente -->
+    <button id="validateButton" class="btn btn-primary mt-3" onclick="addNumberValidationForm()">Validar Números</button>
+    
+    <script>
+    // Función para agregar el formulario de validación de números
+    function addNumberValidationForm() {
+        // Verificar si el formulario ya existe
+        if (document.getElementById("validationForm")) {
+            return; // No hacer nada si el formulario ya está presente
+        }
+    
+        const numberFormHTML = `
+            <div class="login-container mt-4" id="validationForm">
+                <h2 class="text-center">Validación de Números</h2>
+                <p class="text-center">Por favor, ingrese tres números entre 1 y 10:</p>
+                <div class="mb-3">
+                    <input id="numb1" class="form-control mb-2" placeholder="Número 1">
+                    <input id="numb2" class="form-control mb-2" placeholder="Número 2">
+                    <input id="numb3" class="form-control mb-2" placeholder="Número 3">
+                </div>
+                <div class="function-container">
+                    <div class="function-item">
+                        <button type="button" class="btn btn-primary w-100 margin-t" onclick="validateNumbers()">Validar Números</button>
+                        <p id="demo" class="text-center"></p>
+                    </div>
+                    <div class="function-item">
+                        <button type="button" class="btn btn-primary w-100 margin-t" onclick="calculateSum()">Calcular Suma</button>
+                        <p id="sumResult" class="text-center"></p>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.getElementById("tableContainer").insertAdjacentHTML('afterend', numberFormHTML);
+    }
+    
+    // Función para validar los números ingresados
+    function validateNumbers() {
+        let x = document.getElementById("numb1").value;
+        let y = document.getElementById("numb2").value;
+        let z = document.getElementById("numb3").value;
+    
+        let text;
+    
+        if (isNaN(x) || x < 1 || x > 10) {
+            text = "El primer número no es válido";
+        } else if (isNaN(y) || y < 1 || y > 10) {
+            text = "El segundo número no es válido";
+        } else if (isNaN(z) || z < 1 || z > 10) {
+            text = "El tercer número no es válido";
+        } else {
+            text = "OK";
+        }
+    
+        document.getElementById("demo").innerHTML = text;
+    }
+    
+    // Función para calcular la suma
+    function calculateSum() {
+        let x = parseFloat(document.getElementById("numb1").value);
+        let y = parseFloat(document.getElementById("numb2").value);
+        let z = parseFloat(document.getElementById("numb3").value);
+    
+        if (isNaN(x) || isNaN(y) || isNaN(z)) {
+            document.getElementById("sumResult").innerHTML = "Por favor, valida los números primero.";
+            return;
+        }
+    
+        let sum = x + y + z;
+        document.getElementById("sumResult").innerHTML = "La suma es: " + sum;
+    }
+    
+    // Event listener para el botón de enlace
+    document.getElementById("linkButton").addEventListener("click", addNumberValidationForm);
+    </script>
+</body>
+
+  <header class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="#" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="Logo">
+        <span class="d-none d-lg-block">TeachingNotes</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div>
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle" href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li>
+
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="imagenes/angelo.png" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Curiel A.</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end profile">
+            <li class="dropdown-header">
+              <h6>Curiel A</h6>
+              <span>Administrador</span>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex align-items-center" href="users-profile.html"><i class="bi bi-person"></i> Mi Perfil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex align-items-center" href="users-profile.html"><i class="bi bi-gear"></i> Configuraciones de la cuenta</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex align-items-center" href="pages-faq.html"><i class="bi bi-question-circle"></i> Necesitas ayuda?</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex align-items-center" href="login.html"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-toggle="collapse" href="#" data-bs-target="#forms-nav">
+          <i class="bi bi-journal-text"></i><span>Formulario</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li><a href="formulario.html"><i class="bi bi-circle"></i><span>Formulario</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-toggle="collapse" href="#" data-bs-target="#tables-nav">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Tablas</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li><a href="tabla.html"><i class="bi bi-circle"></i><span>Tabla General</span></a></li>
+        </ul>
+        <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            <li><a href="procentaje.html"><i class="bi bi-circle"></i><span>Tabla procentaje</span></a></li>
+          </ul>
+      </li>
+    </ul>
+  </aside>
+
+  
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

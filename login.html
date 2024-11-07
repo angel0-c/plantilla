@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="/stilos/stilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            background-image: url(imagenes/image\ 8.png);
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+           
+        }
+
+        .login-container {
+            background-color: white; 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            text-align: center;
+        }
+
+        h3, p {
+            margin: 5px 0;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-button {
+            background-color: #011126;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .form-button:hover {
+            background-color: #011C40;
+        }
+
+
+        .margin-t {
+            margin-top: 10px;
+        }
+
+        .margin-b {
+            margin-bottom: 10px;
+        }
+
+        .form-check {
+            text-align: left; /* Alinear a la izquierda */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div>
+            <h1 class="logo-badge">
+                <span class="fa fa-user-circle"></span>
+            </h1>
+        </div>
+        <h3>Teaching Note</h3>
+        <p>Inicio sesión</p>
+        <div class="container-content">
+            <form class="margin-t">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Usuario" required />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Contraseña" required />
+                </div>
+                <select class="form-select margin-t" aria-label="Tipo de Documento">
+                    <option selected>Tipo de Documento</option>
+                    <option value="1">Tarjeta de Identidad</option>
+                    <option value="2">Permiso Por Protección Temporal</option>
+                    <option value="3">Cédula</option>
+                    <option value="4">Cédula Extranjera</option>
+                </select>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Recordar contraseña</label>
+                </div>
+                <a href="inicio.html" class="btn btn-primary" type="submit" style="background-color:#011C40">Ingresar</a>
+                <div class="col-md-12">
+                    <div class="d-grid">
+                       
+                            ¿Has olvidado la contraseña?
+                        </button>
+                    </div>
+                </div>
+                <p class="margin-t">
+                    <small>Teaching Note &copy; 2024</small>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para recuperación de contraseña -->
+    <div class="modal fade" id="demo-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content rounded shadow border-0">
+                <div class="modal-body mx-5 px-5">
+                    <div class="text-center">
+                        <form class="p-4" id="demo-form">
+                            <div class="mt-4">
+                                <h4 class="text-dark" style="font-weight: normal;">
+                                    Si necesitas asistencia técnica relacionada con el cambio de cuenta, por favor, contacta a nuestro equipo de soporte enviando un correo a angelo00dt@gmail.com.
+                                </h4>
+                                <div class="row pt-5 justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <div class="form-icon position-relative">
+                                                <input name="username" id="username" type="text" class="form-control ps-5" placeholder="Nombre de usuario" required />
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="form-icon position-relative">
+                                                <input name="email" id="email" type="email" class="form-control ps-5" placeholder="Correo" required />
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="form-icon position-relative">
+                                                <input name="school" id="school" type="text" class="form-control ps-5" placeholder="Nombre del colegio" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-grid col-lg-2 mx-auto mb-0">
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
